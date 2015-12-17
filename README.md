@@ -1,6 +1,8 @@
 # Kony-Require
 A simple, synchronous require framework for the Kony development platform. Provides dependency resolution and injection, filling a void for Kony.
 
+While this technically works in all JS environments, most already have much more robust module frameworks established.
+
 ## Syntax & Use
 Include `AA_require.js` in your Kony project under `modules/js`. Since Kony loads and executes JavaScript files using an ascii value sort on filenames, the `AA_` prefix helps ensure this file executes before any of your own module definitions try to register themselves. If you see errors along the lines of "define is not defined", you might need another `A` on the file prefix :)
 
