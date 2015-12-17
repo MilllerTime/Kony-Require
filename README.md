@@ -1,7 +1,7 @@
 # Kony-Require
 A simple, synchronous require framework for the Kony development platform. Provides dependency resolution and injection, filling a void for Kony.
 
-While this technically works in all JS environments, most already have much more robust module frameworks established.
+While this technically works in all JS environments, most already have much more robust module frameworks established. If you find yourself stuck using Kony, this framework might help.
 
 ## Syntax & Use
 Include `AA_require.js` in your Kony project under `modules/js`. Since Kony loads and executes JavaScript files using an ascii value sort on filenames, the `AA_` prefix helps ensure this file executes before any of your own module definitions try to register themselves. If you see errors along the lines of "define is not defined", you might need another `A` on the file prefix :)
@@ -43,7 +43,9 @@ define('ModuleName', ['OtherModule', 'YetAnotherModule'], function(OtherModule, 
 In the rare case that you need to dynamically include a module in your code, use require():
 (note that define() uses require() internally to fulfill dependencies)
 
-	var SomeModule = require('SomeModule');
+```JavaScript
+var SomeModule = require('SomeModule');
+```
 
 
 ## Other Notes
@@ -54,6 +56,8 @@ Defining modules with circular dependencies is not supported.
 
 If you NEED a circular dependency, ex. module A depends on module B, but module B also depends on module A, you can explicitly define A depending on B, then inside one of B's methods you can do
 
-	var A = require('A');
+```JavaScript
+var A = require('A');
+```
 
 as long as that method isn't executed until after all modules are defined. Since this creates a "hidden" dependency, this pattern is discouraged. If you find you need a circular dependancy, it's best to first reconsider your architecture.
